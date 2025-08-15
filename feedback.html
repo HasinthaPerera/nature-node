@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback/Comments</title>
+    <link rel="stylesheet" href="feedback.css">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="Home.html">Home</a>
+            <a href="issues.html">Issues</a>
+            <a href="solutions.html">Solutions</a>
+            <a href="community.html">Community</a>
+            <a href="feedback.html">Feedback/Comments</a>
+        </nav>
+    </header>
+
+    <main class ="main-content">
+        <div class="container" id="feedback-app">
+            <h2>Feedback/Comments</h2> 
+            <h3>If you have any feedbacks or suggestions to help me improve this website please leave a comment..</h3>
+           
+            <div>
+                <textarea v-model="newComment" placeholder="Enter your feedback/comment..."></textarea>
+                <button @click="addComment">Add Comment</button>
+            </div>
+            <ul class="comment-list">
+                <li v-for="(comment, index) in comments" :key="index" class="comment">
+                    {{ comment }}
+                    <button @click="deleteComment(index)">Delete</button>
+                </li>
+            </ul>
+            <div class="image-container">
+                <img src="Images/feedback.jpg" alt="Feedback Image" class="centered-image">
+           </div>
+            
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NatureNode. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    comments: [],
+                    newComment: ''
+                };
+            },
+            created() {
+                this.loadComments();
+            },
+            methods: {
+                addComment() {
+                    if (this.newComment.trim() !== '') {
+                        this.comments.push(this.newComment);
+                        this.saveComments();
+                        this.newComment = '';
+                    }
+                },
+                deleteComment(index) {
+                    this.comments.splice(index, 1);
+                    this.saveComments();
+                },
+                saveComments() {
+                    localStorage.setItem('comments', JSON.stringify(this.comments));
+                },
+                loadComments() {
+                    const storedComments = localStorage.getItem('comments');
+                    if (storedComments) {
+                        this.comments = JSON.parse(storedComments);
+                    }
+                }
+            }
+        });
+
+        app.mount('#feedback-app');
+    </script>
+</body>
+</html>
