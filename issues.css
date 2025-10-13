@@ -1,18 +1,17 @@
-/* Import a modern font from Google Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-/* Define a color palette using CSS Variables */
 :root {
-    --primary-color: #00796b;      /* Main Teal */
-    --primary-dark: #004d40;     /* Darker Teal for accents */
-    --background-color: #e0f7fa; /* Light Cyan background */
-    --surface-color: #ffffff;    /* White for cards/containers */
+    --primary-color: #00796b;      
+    --primary-dark: #004d40;     
+    --background-color: #e0f7fa; 
+    --surface-color: #ffffff;   
     --text-color: #333;
     --light-text-color: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
-/* General Body Styling & Reset */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -24,7 +23,7 @@ body, html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif; /* Use the new font */
+    font-family: 'Poppins', sans-serif; 
     background-color: var(--background-color);
     color: var(--text-color);
     display: flex;
@@ -32,7 +31,7 @@ body {
     line-height: 1.6;
 }
 
-/* Header & Navigation */
+
 header {
     background-color: var(--primary-color);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -53,29 +52,29 @@ nav a {
     text-decoration: none;
     font-weight: 600;
     padding-bottom: 5px;
-    border-bottom: 2px solid transparent; /* Prepare for hover effect */
+    border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
 }
 
 nav a:hover {
-    color: #b2dfdb; /* Lighter teal for hover */
-    border-bottom-color: #b2dfdb; /* Underline appears on hover */
+    color: #b2dfdb; 
+    border-bottom-color: #b2dfdb; 
     text-decoration: none;
 }
 
-/* Main Content Container */
+
 .container {
     flex: 1;
-    max-width: 1100px; /* Constrain width on large screens */
+    max-width: 1100px; 
     width: 90%;
-    margin: 2rem auto; /* Center the container with vertical spacing */
+    margin: 2rem auto; 
     padding: 2rem;
     background-color: var(--surface-color);
     border-radius: 8px;
     box-shadow: 0 4px 15px var(--shadow-color);
 }
 
-/* Headings */
+
 h1, h2 {
     color: var(--primary-dark);
     text-align: center;
@@ -90,7 +89,7 @@ h2 {
     font-size: 2rem;
 }
 
-/* Comments Section Styling */
+
 .comment-list {
     list-style: none;
     padding: 0;
@@ -105,16 +104,15 @@ h2 {
     margin-bottom: 1rem;
 }
 
-/* Footer Styling */
+
 footer {
     background-color: var(--primary-color);
     color: var(--light-text-color);
     text-align: center;
     padding: 1.5rem;
-    margin-top: auto; /* Pushes footer to the bottom */
+    margin-top: auto; 
 }
 
-/* Responsive Design for smaller screens */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;

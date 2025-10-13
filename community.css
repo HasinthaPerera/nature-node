@@ -1,18 +1,16 @@
-/* Import Google Fonts for a modern look */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* Define a color palette using CSS Variables for easy customization */
 :root {
-    --primary-color: #00796B; /* Teal */
-    --secondary-color: #E0F2F1; /* Light Teal */
+    --primary-color: #00796B; 
+    --secondary-color: #E0F2F1; 
     --text-color: #333333;
     --light-text-color: #FFFFFF;
-    --nav-footer-bg: #004D40; /* Dark Teal */
+    --nav-footer-bg: #004D40; 
     --shadow-color: rgba(0, 0, 0, 0.1);
     --card-hover-border: #00796B;
 }
 
-/* General Body Styling & Reset */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,7 +27,6 @@ body {
     min-height: 100vh;
 }
 
-/* Header and Navigation */
 header {
     background-color: var(--nav-footer-bg);
     box-shadow: 0 2px 5px var(--shadow-color);
@@ -51,13 +48,13 @@ nav a {
 }
 
 nav a:hover {
-    color: #B2DFDB; /* Lighter teal for hover */
+    color: #B2DFDB; 
     text-decoration: none;
 }
 
-/* Main Content Styling */
+
 .main-content {
-    flex: 1; /* Allows main content to fill available space */
+    flex: 1; 
 }
 
 .container {
@@ -67,11 +64,11 @@ nav a:hover {
     text-align: center;
 }
 
-/* Headings Styling */
+
 .container h2 {
     color: var(--primary-color);
     font-size: 2.5rem;
-    text-decoration: none; /* Removed underline for a cleaner look */
+    text-decoration: none;
     margin-bottom: 0.5rem;
 }
 
@@ -89,7 +86,6 @@ nav a:hover {
     margin-bottom: 2.5rem;
 }
 
-/* Styling the UL as a Card Layout */
 .container ul {
     list-style: none;
     padding: 0;
@@ -120,9 +116,9 @@ nav a:hover {
     border-color: var(--card-hover-border);
 }
 
-/* Image Styling */
+
 .container img {
-    max-width: 100%; /* Makes images responsive */
+    max-width: 100%; 
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 15px var(--shadow-color);
@@ -134,11 +130,10 @@ nav a:hover {
     transform: scale(1.03);
 }
 
-/* Footer Styling */
 footer {
     background-color: var(--nav-footer-bg);
     color: var(--light-text-color);
     text-align: center;
     padding: 1.5rem;
-    margin-top: auto; /* Pushes footer to the bottom */
+    margin-top: auto; 
 }

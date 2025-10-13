@@ -1,41 +1,48 @@
-/* Import Google Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* Define a color palette using CSS Variables */
+
 :root {
-    --primary-color: #2E8B57; /* Sea Green */
-    --secondary-color: #F0FFF0; /* Honeydew */
+    --primary-color: #2E8B57; 
+    --secondary-color: #F0FFF0;
     --text-color: #333333;
     --light-text-color: #FFFFFF;
     --nav-footer-bg: #226A42;
-    --shadow-color: rgba(0, 0, 0, 0.1);
+    --accent-color: #C1FFC1; 
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --focus-outline-color: #2E8B57;
 }
 
-/* General Body Styling & Reset */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: var(--secondary-color);
+
+    background-image: linear-gradient(180deg, var(--secondary-color), #ffffff);
     color: var(--text-color);
-    line-height: 1.6;
+    line-height: 1.7;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-/* Header and Navigation */
+
 .navbar {
     background-color: var(--nav-footer-bg);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 5px var(--shadow-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 .nav-logo {
@@ -43,39 +50,74 @@ body {
     font-weight: 700;
     font-size: 1.5rem;
     text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05);
 }
 
 .nav-links a {
+    position: relative;
     color: var(--light-text-color);
     margin: 0 15px;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
+    padding: 5px 0;
 }
 
-.nav-links a:hover, .nav-links a.active {
-    color: #C1FFC1; /* Light Green for hover/active */
-    text-decoration: underline;
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
 }
 
-/* Main Content Styling */
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--focus-outline-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+
 main {
-    flex: 1; /* Allows main content to fill available space */
+    flex: 1;
 }
 
 .container {
     max-width: 1100px;
-    margin: 2rem auto;
-    padding: 2rem;
+    margin: 3rem auto;
+    padding: 3rem;
     background-color: var(--light-text-color);
-    border-radius: 10px;
-    box-shadow: 0 4px 15px var(--shadow-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 30px var(--shadow-color);
 }
 
-/* Welcome Section and Heading Animation */
+
 .welcome-section {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 @keyframes fadeInDown {
@@ -90,24 +132,25 @@ main {
 }
 
 h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
+    font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 1rem;
     animation: fadeInDown 1.5s ease-in-out forwards;
 }
 
-/* Explore Section with Grid Layout */
+
 .explore-section h2 {
     text-align: center;
     color: var(--primary-color);
-    font-size: 2rem;
-    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
 }
 
 .explore-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 3rem;
     align-items: center;
 }
 
@@ -116,20 +159,28 @@ h1 {
 }
 
 .explore-links li {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
 }
 
+
 .explore-links a {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    padding: 12px 24px;
+    border-radius: 8px;
     text-decoration: none;
     color: var(--primary-color);
     font-size: 1.1rem;
     font-weight: 600;
-    transition: letter-spacing 0.3s ease;
+    border: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
 }
 
 .explore-links a:hover {
-    letter-spacing: 1px;
-    text-decoration: underline;
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .explore-images {
@@ -142,46 +193,65 @@ h1 {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 2px 8px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .explore-images img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 15px var(--shadow-color);
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px var(--shadow-color);
+    filter: brightness(1.05);
 }
 
 
-/* Footer Styling */
 footer {
     background-color: var(--nav-footer-bg);
     color: var(--light-text-color);
     text-align: center;
-    padding: 1.5rem;
-    margin-top: auto; /* Pushes footer to the bottom */
+    padding: 2rem;
+    margin-top: auto;
 }
 
-/* Responsive Design for Mobile Devices */
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
-        padding: 1rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .nav-logo {
+        margin-bottom: 1rem;
     }
 
     .nav-links {
-        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .nav-links a {
-        margin: 0 8px;
+        margin: 0.25rem 0.75rem;
     }
 
     h1 {
         font-size: 2.2rem;
     }
 
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    .container {
+        padding: 2rem 1.5rem;
+        margin: 2rem auto;
+    }
+
     .explore-grid {
-        grid-template-columns: 1fr; /* Stack grid items vertically */
+        grid-template-columns: 1fr; 
+    }
+
+    .explore-links {
+        text-align: center;
     }
 
     .explore-images {
