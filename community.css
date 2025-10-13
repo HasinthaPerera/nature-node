@@ -1,60 +1,144 @@
-body, html {
-    height:100%;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #8cc6c7;
-    color: rgb(0, 1, 7);
+/* Import Google Fonts for a modern look */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Define a color palette using CSS Variables for easy customization */
+:root {
+    --primary-color: #00796B; /* Teal */
+    --secondary-color: #E0F2F1; /* Light Teal */
+    --text-color: #333333;
+    --light-text-color: #FFFFFF;
+    --nav-footer-bg: #004D40; /* Dark Teal */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --card-hover-border: #00796B;
+}
+
+/* General Body Styling & Reset */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
     display: flex;
     flex-direction: column;
-  }
-  
-  h1{
-    color: rgb(0, 1, 7);
-  } 
-  h2 {
-    text-align: center;
-    color: rgb(17, 51, 238); 
-  }
-  
-  nav {
-    background-color: rgb(35, 66, 241);
-    padding: 10px;
-  }
-  
-  nav a {
-    color: #ffffff;
-    margin: 0 10px;
+    min-height: 100vh;
+}
+
+/* Header and Navigation */
+header {
+    background-color: var(--nav-footer-bg);
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+nav a {
+    color: var(--light-text-color);
+    margin: 0 15px;
     text-decoration: none;
-  }
-  
-  nav a:hover {
-    text-decoration: underline;
-  }
-  
-  .container {
-    padding: 20px;
-    flex: 1;
-  }
-  
-  footer {
-    background-color: rgb(17, 51, 238);
-    color: #ffffff;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding-bottom: 5px;
+}
+
+nav a:hover {
+    color: #B2DFDB; /* Lighter teal for hover */
+    text-decoration: none;
+}
+
+/* Main Content Styling */
+.main-content {
+    flex: 1; /* Allows main content to fill available space */
+}
+
+.container {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 2rem;
     text-align: center;
-    padding: 10px;
-    margin-top:auto;
-  }
-  
-  .comment-list {
+}
+
+/* Headings Styling */
+.container h2 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    text-decoration: none; /* Removed underline for a cleaner look */
+    margin-bottom: 0.5rem;
+}
+
+.container h1 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.container h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #555;
+    margin-bottom: 2.5rem;
+}
+
+/* Styling the UL as a Card Layout */
+.container ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .comment {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-  }
-  
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.container ul li a {
+    display: block;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--shadow-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    border: 2px solid transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    height: 100%;
+}
+
+.container ul li a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+    border-color: var(--card-hover-border);
+}
+
+/* Image Styling */
+.container img {
+    max-width: 100%; /* Makes images responsive */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.container img:hover {
+    transform: scale(1.03);
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--nav-footer-bg);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
