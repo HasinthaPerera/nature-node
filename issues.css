@@ -1,59 +1,132 @@
-body, html {
-    height:100%;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #e0f7fa; 
-    color: #333;
+/* Import a modern font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Define a color palette using CSS Variables */
+:root {
+    --primary-color: #00796b;      /* Main Teal */
+    --primary-dark: #004d40;     /* Darker Teal for accents */
+    --background-color: #e0f7fa; /* Light Cyan background */
+    --surface-color: #ffffff;    /* White for cards/containers */
+    --text-color: #333;
+    --light-text-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+/* General Body Styling & Reset */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Use the new font */
+    background-color: var(--background-color);
+    color: var(--text-color);
     display: flex;
     flex-direction: column;
-  }
-  
-  h1{
-    color:#00796b ;
-  } 
-  h2 {
-    text-align: center;
-    color: #00796b;
-  }
-  
-  nav {
-    background-color: #00796b;
-    padding: 10px;
-  }
-  
-  nav a {
-    color: #ffffff;
-    margin: 0 10px;
+    line-height: 1.6;
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+nav a {
+    color: var(--light-text-color);
+    margin: 0 1rem;
     text-decoration: none;
-  }
-  
-  nav a:hover {
-    text-decoration: underline;
-  }
-  
-  .container {
-    padding: 20px;
+    font-weight: 600;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; /* Prepare for hover effect */
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #b2dfdb; /* Lighter teal for hover */
+    border-bottom-color: #b2dfdb; /* Underline appears on hover */
+    text-decoration: none;
+}
+
+/* Main Content Container */
+.container {
     flex: 1;
-  }
-  
-  footer {
-    background-color: #00796b;
-    color: #ffffff;
+    max-width: 1100px; /* Constrain width on large screens */
+    width: 90%;
+    margin: 2rem auto; /* Center the container with vertical spacing */
+    padding: 2rem;
+    background-color: var(--surface-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+/* Headings */
+h1, h2 {
+    color: var(--primary-dark);
     text-align: center;
-    padding: 10px;
-    margin-top:auto;
-  }
-  
-  .comment-list {
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+/* Comments Section Styling */
+.comment-list {
     list-style: none;
     padding: 0;
-  }
-  
-  .comment {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-  }
+    margin-top: 2rem;
+}
+
+.comment {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto; /* Pushes footer to the bottom */
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    nav a {
+        margin: 0.5rem 0;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    .container {
+        padding: 1.5rem;
+    }
+}
