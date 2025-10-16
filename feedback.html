@@ -75,20 +75,20 @@
             },
             methods: {
                 addComment() {
-                    // Exit if the comment is empty
+                    
                     if (!this.newCommentText) return;
                     
                     const newComment = {
-                        id: Date.now(), // Use a timestamp for a unique key
+                        id: Date.now(), 
                         text: this.newCommentText
                     };
 
-                    this.comments.unshift(newComment); // Add to the beginning of the list
+                    this.comments.unshift(newComment); 
                     this.saveComments();
-                    this.newCommentText = ''; // Clear the textarea
+                    this.newCommentText = ''; 
                 },
                 deleteComment(commentId) {
-                    // Filter out the comment with the matching id
+                    
                     this.comments = this.comments.filter(comment => comment.id !== commentId);
                     this.saveComments();
                 },
