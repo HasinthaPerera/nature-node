@@ -1,45 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Feedback/Comments</title>
-    <link rel="stylesheet" href="feedback.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share your feedback and comments to help improve the NatureNode website.">
+    <title>Feedback - NatureNode</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://unpkg.com/vue@3"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="issues.html">Issues</a>
-            <a href="solutions.html">Solutions</a>
-            <a href="community.html">Community</a>
-            <a href="feedback.html">Feedback/Comments</a>
+        <nav class="navbar">
+            <a href="index.html" class="nav-logo">NatureNode</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="issues.html">Issues</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="community.html">Community</a>
+                <a href="feedback.html" class="active">Feedback</a>
+            </div>
         </nav>
     </header>
 
-    <main class ="main-content">
+    <main>
         <div class="container" id="feedback-app">
-            <h2>Feedback/Comments</h2> 
-            <h3>If you have any feedbacks or suggestions to help me improve this website please leave a comment..</h3>
-           
-            <div>
-                <textarea v-model="newComment" placeholder="Enter your feedback/comment..."></textarea>
-                <button @click="addComment">Add Comment</button>
-            </div>
-            <ul class="comment-list">
-                <li v-for="(comment, index) in comments" :key="index" class="comment">
-                    {{ comment }}
-                    <button @click="deleteComment(index)">Delete</button>
-                </li>
-            </ul>
-            <div class="image-container">
-                <img src="Images/feedback.jpg" alt="Feedback Image" class="centered-image">
-           </div>
-            
+            <section class="feedback-page">
+                <h1>Share Your Feedback 📝</h1>
+                <p class="subtitle">Have suggestions to help us improve? Please leave a comment below!</p>
+
+                <div class="feedback-grid">
+                    <div class="feedback-form-container">
+                        <form @submit.prevent="addComment" class="feedback-form">
+                            <textarea v-model.trim="newCommentText" placeholder="Enter your feedback here..." required></textarea>
+                            <button type="submit">Add Comment</button>
+                        </form>
+
+                        <div class="comment-section">
+                            <h3>All Comments</h3>
+                            <p v-if="comments.length === 0" class="no-comments">No feedback yet. Be the first to share your thoughts!</p>
+                            <transition-group name="comment-fade" tag="ul" class="comment-list">
+                                <li v-for="comment in comments" :key="comment.id" class="comment">
+                                    <span class="comment-text">{{ comment.text }}</span>
+                                    <button @click="deleteComment(comment.id)" class="delete-btn" title="Delete comment">&times;</button>
+                                </li>
+                            </transition-group>
+                        </div>
+                    </div>
+
+                    <div class="feedback-image-container">
+                        <img src="Images/feedback.jpg" alt="A suggestion box with letters going into it." class="centered-image">
+                    </div>
+                </div>
+            </section>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 NatureNode. All rights reserved.</p>
+        <p>&copy; 2025 NatureNode. All rights reserved.</p>
     </footer>
 
     <script>
@@ -47,7 +67,7 @@
             data() {
                 return {
                     comments: [],
-                    newComment: ''
+                    newCommentText: ''
                 };
             },
             created() {
@@ -55,21 +75,28 @@
             },
             methods: {
                 addComment() {
-                    if (this.newComment.trim() !== '') {
-                        this.comments.push(this.newComment);
-                        this.saveComments();
-                        this.newComment = '';
-                    }
+                    // Exit if the comment is empty
+                    if (!this.newCommentText) return;
+                    
+                    const newComment = {
+                        id: Date.now(), // Use a timestamp for a unique key
+                        text: this.newCommentText
+                    };
+
+                    this.comments.unshift(newComment); // Add to the beginning of the list
+                    this.saveComments();
+                    this.newCommentText = ''; // Clear the textarea
                 },
-                deleteComment(index) {
-                    this.comments.splice(index, 1);
+                deleteComment(commentId) {
+                    // Filter out the comment with the matching id
+                    this.comments = this.comments.filter(comment => comment.id !== commentId);
                     this.saveComments();
                 },
                 saveComments() {
-                    localStorage.setItem('comments', JSON.stringify(this.comments));
+                    localStorage.setItem('natureNodeComments', JSON.stringify(this.comments));
                 },
                 loadComments() {
-                    const storedComments = localStorage.getItem('comments');
+                    const storedComments = localStorage.getItem('natureNodeComments');
                     if (storedComments) {
                         this.comments = JSON.parse(storedComments);
                     }
