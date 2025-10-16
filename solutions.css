@@ -1,24 +1,24 @@
-/* Import Google Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* Define the unified NatureNode color palette */
+
 :root {
-    --primary-color: #2E8B57;      /* Sea Green */
-    --nav-footer-bg: #226A42;     /* Darker Green for nav/footer */
-    --secondary-color: #F0FFF0;    /* Honeydew background */
-    --surface-color: #ffffff;     /* White for cards/containers */
-    --accent-color: #C1FFC1;      /* Light Green for hovers/accents */
+    --primary-color: #2E8B57;      
+    --nav-footer-bg: #226A42;     
+    --secondary-color: #F0FFF0;    
+    --surface-color: #ffffff;     /
+    --accent-color: #C1FFC1;      /
     --text-color: #333;
     --light-text-color: #ffffff;
     --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
-/* General Body Styling & Reset */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -30,7 +30,7 @@ body {
     min-height: 100vh;
 }
 
-/* Header & Navigation */
+
 .navbar {
     background-color: var(--nav-footer-bg);
     padding: 1rem 2rem;
@@ -66,7 +66,7 @@ body {
     border-bottom-color: var(--accent-color);
 }
 
-/* Main Content & Container */
+
 main {
     flex: 1;
 }
@@ -84,7 +84,7 @@ section {
     box-shadow: 0 8px 30px var(--shadow-color);
 }
 
-/* Page Specific: Solutions Page */
+
 .solutions-page h1 {
     font-size: 2.8rem;
     color: var(--primary-color);
@@ -101,7 +101,7 @@ section {
 
 .solutions-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    grid-template-columns: 1fr 1fr; 
     gap: 2.5rem;
     align-items: center;
 }
@@ -122,7 +122,7 @@ section {
 }
 
 .solutions-image img {
-    width: 100%; /* Makes image responsive */
+    width: 100%; 
     height: auto;
     border-radius: 12px;
     box-shadow: 0 5px 20px var(--shadow-color);
@@ -130,10 +130,10 @@ section {
 }
 
 .solutions-image img:hover {
-    transform: scale(1.03); /* Adds a slight zoom effect on hover */
+    transform: scale(1.03); 
 }
 
-/* Footer Styling */
+
 footer {
     background-color: var(--nav-footer-bg);
     color: var(--light-text-color);
@@ -142,7 +142,6 @@ footer {
     margin-top: auto;
 }
 
-/* Responsive Design for smaller screens */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -153,10 +152,10 @@ footer {
     .solutions-page h1 { font-size: 2.2rem; }
 
     .solutions-grid {
-        grid-template-columns: 1fr; /* Stacks items vertically */
+        grid-template-columns: 1fr; 
     }
 
     .solutions-image {
-        margin-top: 2rem; /* Adds space between text and image on mobile */
+        margin-top: 2rem; 
     }
 }
